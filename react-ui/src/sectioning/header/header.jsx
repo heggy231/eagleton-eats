@@ -1,4 +1,4 @@
-import { Navlink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
 
@@ -6,17 +6,17 @@ const Header = () => {
         
         <header>
             <div>
-            <Navlink to="/">Home</Navlink>
+            <NavLink to="/">Home</NavLink>
             </div>
             <ul>
                 <li>
-                   <Navlink to="/menu">Menu</Navlink>
+                   <NavLink to="/menu">Menu</NavLink>
                 </li>
                 <li>
-                    <Navlink to="/order">Order</Navlink>
+                    <NavLink to="/order">Order</NavLink>
                 </li>
                 <li>
-                    <Navlink to="/about">About</Navlink>
+                    <NavLink to="/about">About</NavLink>
                 </li>
             </ul>
         </header>
