@@ -1,5 +1,4 @@
 import { Route } from "react-router-dom"
-import Landing from "./landing/landing"
 import About from "./about/about"
 import Home from "./home/home"
 import Menu from "./menu/menu"
@@ -9,22 +8,22 @@ const Routes = () => {
 
     return (
         <>
-        <Routes 
+        <Route 
         exact={true}
         path="/"
         render={() => <Home /> }
         />
-        <Routes 
+        <Route 
         exact={true}
         path="/menu"
         render={() => <Menu /> }
         />
-        <Routes 
+        <Route 
         exact={true}
         path="/order"
         render={() => <Order /> }
         />
-        <Routes 
+        <Route 
         exact={true}
         path="/about"
         render={() => <About /> }
