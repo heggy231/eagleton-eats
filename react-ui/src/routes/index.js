@@ -9,26 +9,26 @@ const Routes = () => {
 
     return (
         <>
-                <Routes 
-        exact={true}
-        path="/"
-        render={() => <p><Landing /></p> }
-        />
-        <Routes 
-        exact={true}
-        path="/menu"
-        render={() => <p><Menu /></p> }
-        />
-        <Routes 
-        exact={true}
-        path="/order"
-        render={() => <p><Order /></p> }
-        />
-        <Routes 
-        exact={true}
-        path="/about"
-        render={() => <p><About /></p> }
-        />
+          <Route
+            exact={true}
+            path="/"
+            render={() => <p><Landing /></p> }
+          />
+          <Route
+            exact={true}
+            path="/menu"
+            render={() => <p><Menu /></p> }
+          />
+          <Route
+            exact={true}
+            path="/order"
+            render={() => <p><Order /></p> }
+          />
+          <Route
+            exact={true}
+            path="/about"
+            render={() => <p><About /></p> }
+          />
         </>
     )
 
