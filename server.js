@@ -14,6 +14,6 @@ app.get('/heartbeat', (req, res) =>{
     })
 })
 
-app.listen(8080, () =>{
+app.listen(PORT || 8080, () =>{
     console.log('The server is listening at port 8080')
 })
