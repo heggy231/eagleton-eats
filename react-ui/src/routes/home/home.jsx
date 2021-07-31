@@ -1,5 +1,13 @@
-const home = () => {
-    return <p>Home</p>;
-  };
-  
-  export default home;
+
+import UsernameForm from "../../components/usernameForm";
+
+const Landing = () => {
+  return (
+    <>
+      <p>Home</p>
+      <UsernameForm />
+    </>
+  )
+};
+
+export default Landing;

@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 const Greeting = ({ userName }) => {
-     return <h1>Meow {userName} you pathetic human.</h1>
+     return <h1>Hello {userName}</h1>
 }
 
 

@@ -1,5 +1,8 @@
 import { NavLink } from "react-router-dom";
-import Greeting from "../../components/greeting"
+import Greeting from "../../components/greeting";
+
+
+
 const Header = () => {
 
     return (
