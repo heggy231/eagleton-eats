@@ -1,6 +1,6 @@
 module.exports = {
     
-    "food": [
+    "foods": [
         {
             "item": "Brisket",
             "price": "10.60",
