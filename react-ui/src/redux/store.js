@@ -1,22 +1,24 @@
-
-import { configureStore } from '@reduxjs/toolkit'
+// import { configureStore } from "@reduxjs/toolkit";
 // Or from '@reduxjs/toolkit/query/react'
-import { setupListeners } from '@reduxjs/toolkit/query'
+import { setupListeners } from "@reduxjs/toolkit/query";
 import { applyMiddleware, compose, createStore } from "redux";
+import cartReducer from "../redux/reducers/cartReducer";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
-import { foodApi } from './services/api'
+// import { foodApi } from "./services/api";
 
-export const store = configureStore({
-  reducer: {
-    [foodApi.reducerPath]: foodApi.reducer,
-  },
+// export const store = configureStore({
+//   reducer: {
+//     [foodApi.reducerPath]: foodApi.reducer,
+//   },
 
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(foodApi.middleware),
-})
+//   middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware().concat(foodApi.middleware),
+// });
 
-setupListeners(store.dispatch)
+export const store = createStore(cartReducer);
+
+setupListeners(store.dispatch);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

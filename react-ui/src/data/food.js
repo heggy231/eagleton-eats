@@ -1,47 +1,39 @@
 module.exports = {
-    
-    "foods": [
-        {
-            "item": "Brisket",
-            "price": "10.60",
-            "id": "001",
-            "image": "brisket.jpg"
-        },
-        {
-            "item": "Boudin",
-            "price": "10.60",
-            "id": "002",
-            "image": "boudin.jpg"
-        },
-        {
-            "item": "Ribs",
-            "price": "10.60",
-            "id": "003",
-            "image": "ribs.jpg",
-        },
-        {
-            "item": "Sausage",
-            "price": "10.60",
-            "id": "004",
-            "image": "sausage.jpg",
-        },
-        {
-            "item": "Southern Greens",
-            "price": "10.60",
-            "id": "005",
-            "image": "greens.jpg",
-        },
-        {
-            "item": "Southern Green Beans",
-            "price": "10.60",
-            "id": "006",
-            "image": "greens.jpg",
-        },
-        {
-            "item": "Dirty Rice",
-            "price": "10.60",
-            "id": "007",
-            "image": "rice.jpg",
-        },
-    ]
-}
+  foods: [
+    {
+      item: "Brisket",
+      price: "10.60",
+      id: 0,
+    },
+    {
+      item: "Boudin",
+      price: "10.60",
+      id: 1,
+    },
+    {
+      item: "Ribs",
+      price: "10.60",
+      id: 2,
+    },
+    {
+      item: "Sausage",
+      price: "10.60",
+      id: 3,
+    },
+    {
+      item: "Southern Greens",
+      price: "10.60",
+      id: 4,
+    },
+    {
+      item: "Southern Green Beans",
+      price: "10.60",
+      id: 5,
+    },
+    {
+      item: "Dirty Rice",
+      price: "10.60",
+      id: 6,
+    },
+  ],
+};
