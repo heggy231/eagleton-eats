@@ -3,7 +3,7 @@ import Routes from "../../routes";
 
 const Main = () => {
   return (
-    <main>
+    <main style={{marginTop: '60px'}}>
       <Switch>
         <Routes />
       </Switch>
