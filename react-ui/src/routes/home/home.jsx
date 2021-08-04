@@ -1,11 +1,9 @@
 
-import UsernameForm from "../../components/usernameForm";
 
 const Landing = () => {
   return (
     <>
-      <p>Home</p>
-      <UsernameForm />
+      <p>Home Page Building</p>
     </>
   )
 };
