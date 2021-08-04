@@ -42,7 +42,7 @@ const Cart = (props) => {
           })}
         </div>
         <div>Number of items {len}</div>
-        <div>total: {calculateCartTotal(props.cartItems, props.items).toFixed(2)}</div>
+        <div>total: ${calculateCartTotal(props.cartItems, props.items).toFixed(2)}</div>
       </div>
     </div>
   );

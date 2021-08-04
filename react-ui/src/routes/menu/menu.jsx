@@ -10,14 +10,18 @@ const Menu = (props) => {
   };
 
   return (
-    <div id='menu'>
+    <div id="menu">
       {props.items.map((food) => {
         return (
-          <Card className='menu-item' key={food.id}>
-            <Card.Img className='menu-item-img' variant="top" src={food.imageURL}/>
+          <Card className="menu-item" key={food.id}>
+            <Card.Img
+              className="menu-item-img"
+              variant="top"
+              src={food.imageURL}
+            />
             <Card.Body>
               <Card.Title>{food.item}</Card.Title>
-              <Card.Text>{food.price}</Card.Text>
+              <Card.Text>${food.price}</Card.Text>
               <Button variant="primary" onClick={() => handleClick(food.id)}>
                 Add to Cart
               </Button>
