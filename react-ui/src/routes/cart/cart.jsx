@@ -10,7 +10,7 @@ const Cart = (props) => {
   console.log("props", props);
 
   const [len, setLen] = useState(props.cartItems.length);
-  
+
   useEffect(() => {
     const numCartitems = props.cartItems.length;
 
@@ -21,7 +21,7 @@ const Cart = (props) => {
 
   const removeCartItem = (id) => {
     props.removeFromCart(id);
-    setLen(len-1); // comment this line to see what happens
+    setLen(len - 1); // comment this line to see what happens
   };
 
   return (
@@ -32,9 +32,12 @@ const Cart = (props) => {
           {props.cartItems.map((id, i) => {
             const item = findItemById(id, props.items);
             return (
-              <div key={i} className='cart-item'>
+              <div key={i} className="cart-item">
                 {i + 1}. {item.item}: ${item.price}
-                <button className="btn btn-primary" onClick={() => removeCartItem(i)}>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => removeCartItem(i)}
+                >
                   Remove
                 </button>
               </div>
@@ -42,7 +45,9 @@ const Cart = (props) => {
           })}
         </div>
         <div>Number of items {len}</div>
-        <div>total: ${calculateCartTotal(props.cartItems, props.items).toFixed(2)}</div>
+        <div>
+          total: ${calculateCartTotal(props.cartItems, props.items).toFixed(2)}
+        </div>
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ export default function shoppingReducer(state = defaultState, action) {
     case REMOVE_ITEM_FROM_CART:
       console.log("remove - before", state);
       state.cartItems.splice(action.payload, 1);
-      console.log ('remove - after', state)
+      console.log("remove - after", state);
       return {
         ...state,
         cartItems: state.cartItems,
