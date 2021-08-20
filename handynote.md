@@ -1,5 +1,13 @@
 # repo [https://github.com/heggy231/eagleton-eats]
 
+- create build for heroku
+first check how it looks locally when creat buind
+1. cd to root dir
+2. npm run build 
+// this runs the script: "build": "cd react-ui/ && npm install && npm run build"
+then heroku runs the same 
+
+
 ## how to make it single col in sm screen
 
 - make the grid sm={7} if you have 2 col grid (7 is little over half of 12 which is the num of columns in total col in a page)
@@ -36,3 +44,4 @@ http://localhost:8080/heartbeat
   ],
 
 ```
+
