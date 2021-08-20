@@ -1,4 +1,3 @@
-# eagleton-eats
+# [eagleton-eats](https://hc-eagleton-eats.herokuapp.com)
 
 
-rename burger => favicon.ico
