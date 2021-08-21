@@ -43,7 +43,7 @@ app.post("/product", async (req, res) => {
     const { name } = req.body; // obj destructor from req.body.name
 
     // query db, $1 is a place holder [name] this comes from the client side
-    // append RETURNING * command for update, delete, insert data into db
+    // append RETURNING * command for update, delete, insert (aka create) data into db
     //   so that it returns back the data into my variable newProduct
     const newProduct = await pool.query(
       "INSERT INTO product (name) VALUES($1) RETURNING *",
@@ -57,7 +57,6 @@ app.post("/product", async (req, res) => {
 });
 
 // get all products
-
 app.get("/product", async (req, res) => {
   try {
     // no need for return * here since get displays data inherently
@@ -94,11 +93,11 @@ app.put("/product/:id", async (req, res) => {
     const { name } = req.body; // name column from what I post to db
     const updateProduct = await pool.query(
       // UPDATE product SET name = "milk" WHERE product_id = 3;
-      "UPDATE product SET name = $1 WHERE product_id = $2",
+      "UPDATE product SET name = $1 WHERE product_id = $2 RETURNING *",
       [name, id]
     );
 
-    res.json("Our product is updated!");
+    res.json(updateProduct.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
