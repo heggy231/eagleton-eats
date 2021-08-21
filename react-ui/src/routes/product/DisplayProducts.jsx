@@ -18,9 +18,25 @@ const DisplayProducts = () => {
 
   useEffect(() => {
     getProducts();
-  }, []);  // pass [] to make only one request
+  }, []); // pass [] to make only one request
 
-  console.log('all products ==>', products)
+  const deleteProduct = async (id) => {
+    try {
+      // delete fetch request to backend
+      const deleteProd = await fetch(`http://localhost:8080/product/${id}`, {
+        method: "DELETE",
+      });
+
+      // filter in ids that are not passed in id
+      setProducts(products.filter((product) => product.product_id !== id));
+
+      console.log("deleted product: ===>", deleteProd);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  console.log("all products ==>", products);
 
   return (
     <>
@@ -39,14 +55,23 @@ const DisplayProducts = () => {
             <td>Doe</td>
             <td>john@example.com</td>
           </tr> */}
-          {products.map(product => {
+          {products.map((product) => {
             return (
               <tr key={product.product_id}>
                 <td>{product.name}</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <td>
+                  <button className="btn btn-secondary">Edit</button>
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteProduct(product.product_id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>
