@@ -6,3 +6,6 @@ CREATE TABLE product(
 );
 
 SELECT * FROM product;
+
+-- inside pqsql handy commands
+INSERT INTO product(name) VALUES('Korean brown rice');
