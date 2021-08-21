@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import EditProduct from "./EditProduct";
 
 const DisplayProducts = () => {
   const [products, setProducts] = useState([]);
@@ -8,7 +9,7 @@ const DisplayProducts = () => {
       // HEre no need to define method as GET since by default fetch makes a GET request, there is no body to send
       const response = await fetch("http://localhost:8080/product");
       const jsonData = await response.json(); // parse it as JSON
-      console.log("jsonData from backend", jsonData);
+      // console.log("jsonData from backend", jsonData);
       // ==> [{}, {}, ...] which is obj of things inside{product_id: 5, name: "ham"}
       setProducts(jsonData);
     } catch (error) {
@@ -18,9 +19,25 @@ const DisplayProducts = () => {
 
   useEffect(() => {
     getProducts();
-  }, []);  // pass [] to make only one request
+  }, []); // pass [] to make only one request
 
-  console.log('all products ==>', products)
+  const deleteProduct = async (id) => {
+    try {
+      // delete fetch request to backend
+      const deleteProd = await fetch(`http://localhost:8080/product/${id}`, {
+        method: "DELETE",
+      });
+
+      // filter in ids that are not passed in id
+      setProducts(products.filter((product) => product.product_id !== id));
+
+      // console.log("deleted product: ===>", deleteProd);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  // console.log("all products ==>", products);
 
   return (
     <>
@@ -39,14 +56,23 @@ const DisplayProducts = () => {
             <td>Doe</td>
             <td>john@example.com</td>
           </tr> */}
-          {products.map(product => {
+          {products.map((product) => {
             return (
               <tr key={product.product_id}>
                 <td>{product.name}</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <td>
+                  <EditProduct product={product}/>
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteProduct(product.product_id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>

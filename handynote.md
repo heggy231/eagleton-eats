@@ -50,3 +50,33 @@ http://localhost:8080/heartbeat
 
 ```
 
+## communicate to backend
+```js
+
+// inside of InputProduct.jsx)
+// step 1: package up the data I am sending
+const body = { name };
+// step 2: specify what method CREATE => POST, Update => PUT, Delete => DELETE
+const response = await fetch("http://localhost:8080/product", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(body),
+});
+
+// inside of EditProduct.jsx)
+
+
+// for deleting
+// delete fetch request to backend
+const deleteProd = await fetch(`http://localhost:8080/product/${id}`, {
+  method: "DELETE",
+});
+
+// filter in ids that are not passed in id for page display only purpose
+//  db has been updated but we don't want user to update the page to 
+//  see the page update with deleted dataset.
+setProducts(products.filter((product) => product.product_id !== id));
+
+
+
+```
