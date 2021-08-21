@@ -13,3 +13,5 @@ INSERT INTO product(name) VALUES('Korean brown rice');
 SELECT * FROM product WHERE product_id = 1;
 UPDATE product SET name = "Japanese brown rice" WHERE product_id = 3;
 DELETE FROM product WHERE product_id = 1;
+
+SELECT name FROM product;
