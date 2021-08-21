@@ -8,10 +8,10 @@ const Footer = () => {
       <Navbar bg="primary" variant="dark" fixed="bottom">
         <Container>
           <Nav className="me-auto">
-            <Nav.Link href="/">Copyright 2021</Nav.Link>
-            <Nav.Link href="/">Credits</Nav.Link>
+            <Nav.Link href="#">Copyright 2021</Nav.Link>
+            <Nav.Link href="/about">Credits</Nav.Link>
             <Nav.Link
-              href="https://github.com/JKhariD/eagleton-eats"
+              href="https://github.com/heggy231/eagleton-eats"
               target="_blank"
             >
               Github
