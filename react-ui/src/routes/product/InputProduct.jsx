@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DisplayProduct from "./DisplayProduct";
+import DisplayProducts from "./DisplayProducts";
 
 
 const InputProduct = () => {
@@ -17,7 +17,7 @@ const InputProduct = () => {
         body: JSON.stringify(body),
       });
       // console.log('my input response', response);
-      window.location = "/"; // once posting product is done I like to see it listed on my page
+      window.location = "/product"; // once posting product is done I like to see it listed on my page
     } catch (error) {
       console.error(error.message);
     }
@@ -38,7 +38,7 @@ const InputProduct = () => {
           />
           <button className="btn btn-warning">Add Product</button>
         </form>
-        <DisplayProduct />
+        <DisplayProducts />
 
       </div>
     </>
