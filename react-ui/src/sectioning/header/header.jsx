@@ -23,6 +23,9 @@ const Header = (props) => {
             <Nav.Link as={Link} to="/cart">
               Cart ({props.numCartitems})
             </Nav.Link>
+            <Nav.Link as={Link} to="/product1">
+              Product Info
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
