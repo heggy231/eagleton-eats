@@ -61,7 +61,7 @@ const DisplayProducts = () => {
               <tr key={product.product_id}>
                 <td>{product.name}</td>
                 <td>
-                  <EditProduct />
+                  <EditProduct product={product}/>
                 </td>
                 <td>
                   <button
