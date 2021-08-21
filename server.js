@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
 const path = require("path"); // path comes with node therefore no need extra npm i
-const pool = require("./db"); // pg lib db
+const pool = require("./db"); // pg db connection
 
 const app = express(); // app is now express server
 
@@ -58,7 +58,7 @@ app.post("/product", async (req, res) => {
 
 // update a product
 
-//
+// delete a product
 
 app.get("/heartbeat", (req, res) => {
   res.json({
