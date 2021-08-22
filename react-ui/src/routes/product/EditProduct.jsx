@@ -30,9 +30,10 @@ const EditProduct = ({ product }) => {
 
   const handleResetData = () => setName(product.name);
 
+
   return (
     <>
-      <div class="container">
+      <div class="container" style={{marginLeft: '-1rem'}}>
         {/* data-target maps for unique modal look for id=id5 out many modals from DisplayProduct page */}
         <button
           type="button"
