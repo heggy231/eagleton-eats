@@ -80,3 +80,11 @@ setProducts(products.filter((product) => product.product_id !== id));
 
 
 ```
+
+## facebook passport
+ - how to create your own secret key, id
+ * https://developers.facebook.com/docs/facebook-login/web
+ * https://youtu.be/KlE9RAOl9KA
+
+Valid OAuth Redirect URIs:
+http://localhost:3000/auth/facebook/callback
