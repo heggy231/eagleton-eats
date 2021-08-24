@@ -34,7 +34,7 @@ app.use(session(sess));
 //                                Routes
 // ----------------------------------------------------------------------------
 
-// create a todo
+// create a product
 app.post("/product", async (req, res) => {
   try {
     console.log("inside post", req.body); // {name: 'I need to clean'}
