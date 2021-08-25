@@ -1,0 +1,10 @@
+***** Please update this file with id, secret then `touch .env` to create new file.  put all of this content inside there.  NOT this note though. *********
+
+
+PORT=8080
+FACEBOOK_APP_ID=
+FACEBOOK_APP_SECRET=
+FACEBOOK_CALLBACK_URL=http://localhost:8080/auth/facebook/callback
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+GITHUB_CALLBACK_URL=http://localhost:8080/auth/github/callback

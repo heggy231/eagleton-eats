@@ -1,9 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const session = require("express-session");
+const session = require("express-session"); // for github login
 const path = require("path"); // path comes with node therefore no need extra npm i
 const pool = require("./db"); // pg db connection
+const passport = require('passport');
+const GitHubStrategy = require('passport-github').Strategy;
 
 const app = express(); // app is now express server
 
@@ -20,7 +22,7 @@ app.use(express.static(path.resolve(__dirname + "/react-ui/build")));
 app.use(express.json()); // this allows me get access req.body -- only way for me to access to client side, I must communicate thru req.body in json.
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded (converts str => json)
 
-// order matters: session middleware before Passport OAuth
+// !!! order matters: session middleware BEFORE Passport OAuth
 // cookie expires after 10 min
 // secrete is key that allows browser know that I am the server
 const sess = {
@@ -30,9 +32,53 @@ const sess = {
 };
 app.use(session(sess));
 
+passport.use(new GitHubStrategy({
+  clientID: process.env.GITHUB_CLIENT_ID,
+  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  callbackURL: process.env.GITHUB_CALLBACK_URL
+},
+function(accessToken, refreshToken, profile, cb) {
+  console.log(JSON.stringify(profile));
+
+  // ASIDE: Access Tokens are super important!! Treat them like pwd (never store in plain text)
+  // You can use this to talk to Github API
+  console.log("Access Token: *****=======>" + accessToken);
+
+  // Tell passport to move on
+  cb(null, profile)
+}
+));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Configure Passport authenticated session persistence.
+// [doc](https://github.com/passport/express-4.x-facebook-example/blob/master/boot/auth.js)
+// In order to restore authentication state across HTTP requests, Passport needs
+// to serialize users into and deserialize users out of the session.  In a
+// production-quality application, this would typically be as simple as
+// supplying the user ID when serializing, and querying the user record by ID
+// from the database when deserializing.  However, due to the fact that this
+// example does not have a database, the complete Facebook profile is serialized
+// and deserialized.
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
+
+console.log('*******process.env.GITHUB_CLIENT_ID******', process.env.GITHUB_CLIENT_ID);
+
 // ----------------------------------------------------------------------------
 //                                Routes
 // ----------------------------------------------------------------------------
+
+app.get("/", (req, res) => {
+  console.log("Here! at the ROOOT!!!!")
+  res.send(`<h1>Hello! You are logged IN!</h1>`);
+})
 
 // create a product
 app.post("/product", async (req, res) => {
@@ -122,6 +168,22 @@ app.get("/heartbeat", (req, res) => {
     is: "working",
   });
 });
+
+// Place github strategy after the home page
+// http://www.passportjs.org/packages/passport-github/
+// PUT 2 /auth/github/ endpoints after `/` root home pg
+
+// 1. auth/github takes me to github, user enters github credential to authenticate('github'));
+// 2. once profile is received, callback route => redirect `/` homepage
+// 1,2 GOAL: 1. go to my app => 2. Github => 3. back to my app
+app.get('/auth/github', passport.authenticate('github'));
+
+app.get('/auth/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 // PORT needs
 app.listen(PORT, () => {
