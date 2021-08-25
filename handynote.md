@@ -1,6 +1,8 @@
 # repo [https://github.com/heggy231/eagleton-eats]
 
 
+- database: https://blog.logrocket.com/getting-started-with-postgres-in-your-react-app/
+
 
 - original repo (https://github.com/JKhariD/eagleton-eats)
 
