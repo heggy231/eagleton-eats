@@ -1,9 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const session = require("express-session");
+const session = require("express-session"); // for github login
 const path = require("path"); // path comes with node therefore no need extra npm i
 const pool = require("./db"); // pg db connection
+const passport = require('passport');
+const GitHubStrategy = require('passport-github').Strategy;
 
 const app = express(); // app is now express server
 
@@ -20,7 +22,7 @@ app.use(express.static(path.resolve(__dirname + "/react-ui/build")));
 app.use(express.json()); // this allows me get access req.body -- only way for me to access to client side, I must communicate thru req.body in json.
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded (converts str => json)
 
-// order matters: session middleware before Passport OAuth
+// !!! order matters: session middleware BEFORE Passport OAuth
 // cookie expires after 10 min
 // secrete is key that allows browser know that I am the server
 const sess = {
@@ -34,7 +36,7 @@ app.use(session(sess));
 //                                Routes
 // ----------------------------------------------------------------------------
 
-// create a todo
+// create a product
 app.post("/product", async (req, res) => {
   try {
     console.log("inside post", req.body); // {name: 'I need to clean'}
