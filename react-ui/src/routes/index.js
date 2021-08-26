@@ -13,7 +13,12 @@ const Routes = () => {
       <Route exact path="/menu" render={() => <Menu />} />
       <Route exact path="/cart" render={() => <Cart />} />
       <Route exact path="/about" render={() => <About />} />
-      <GuardedRoute exact path="/product" component={InputProduct} auth={true} />
+      <GuardedRoute
+        exact
+        path="/product"
+        component={InputProduct}
+        auth={true}
+      />
     </>
   );
 };
