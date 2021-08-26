@@ -1,5 +1,17 @@
 # repo [https://github.com/heggy231/eagleton-eats]
 
+### code to keep
+
+```js
+
+      <Route exact path="/product" render={() => <InputProduct />} />
+
+
+      <GuardedRoute exact path="/protected" component={Protected} auth={isAuthenticated} />
+```
+
+
+
 
 - database: https://blog.logrocket.com/getting-started-with-postgres-in-your-react-app/
 

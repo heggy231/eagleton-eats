@@ -4,6 +4,7 @@ import Home from "./home/home";
 import Menu from "./menu/menu";
 import Cart from "./cart/cart";
 import InputProduct from "./product/InputProduct";
+import GuardedRoute from "../components/GuardedRoute";
 
 const Routes = () => {
   return (
@@ -12,7 +13,7 @@ const Routes = () => {
       <Route exact path="/menu" render={() => <Menu />} />
       <Route exact path="/cart" render={() => <Cart />} />
       <Route exact path="/about" render={() => <About />} />
-      <Route exact path="/product" render={() => <InputProduct />} />
+      <GuardedRoute exact path="/product" component={InputProduct} auth={true} />
     </>
   );
 };
