@@ -1,5 +1,28 @@
 # repo [https://github.com/heggy231/eagleton-eats]
 
+
+# How to run
+## dotenv
+- Please create .env file
+// inside .env
+```
+PORT=8080
+
+FACEBOOK_CALLBACK_URL=http://localhost:8080/auth/facebook/callback
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+GITHUB_CALLBACK_URL=http://localhost:8080/auth/github/callback
+
+FRONTEND_URL=http://localhost:3000
+```
+
+
+## connecting to db
+
+- https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
+
+
+
 ### code to keep
 
 ```js
