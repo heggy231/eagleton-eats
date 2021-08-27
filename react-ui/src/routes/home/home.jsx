@@ -1,31 +1,47 @@
 // import Food from "./food-wooden.jpeg";
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Button } from "react-bootstrap";
 import './home.css';
 import { Link } from 'react-router-dom';
 
-const Landing = () => {
+const Landing = ({ ...rest }) => {
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // function login() {
+  //   setIsAuthenticated(true);
+  //   console.log("loggedInUser:" + isAuthenticated);
+  // }
 
-  function login() {
-    setIsAuthenticated(true);
-    console.log("loggedInUser:" + isAuthenticated);
-  }
+  // function logout() {
+  //   setIsAuthenticated(false);
+  //   console.log("loggedInUser:" + isAuthenticated);
+  // }
+  const [userLogin, setUserLogin] = useState(false);
 
-  function logout() {
-    setIsAuthenticated(false);
-    console.log("loggedInUser:" + isAuthenticated);
-  }
+  useEffect(() => {
+    try {
+      fetch("/auth/userinfo")
+        .then((res) => res.json())
+        .then((userData) => {
+          console.log("user login?", userData);
+          setUserLogin(true)
+        });
+    } catch (error) {
+      console.error("user data request error ====>", error.message)
+    }
+  }, [])
 
   return (
     <>
       <h1>Welcome to Our Eagleton Food Truck</h1>
-      <Link to="/auth/github" target="_self"><Button>Github Login</Button></Link>
+      {
+        userLogin ? <a href="/auth/logout">LogOUT</a> : <a href="/auth/github">Login with Github</a>
+      }
+{/*       
+      <Link to="/auth/github" target="_self"><Button>Github Login</Button></Link> */}
+      {/* <br />
+      <button >Login</button>
       <br />
-      <button onClick={login}>Login</button>
-      <br />
-      <button onClick={logout}>Logout</button>
+      <button >Logout</button> */}
     </>
   )
 };
