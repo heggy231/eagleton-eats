@@ -4,17 +4,8 @@ import { Button } from "react-bootstrap";
 import './home.css';
 import { Link } from 'react-router-dom';
 
-const Landing = ({ ...rest }) => {
+const Landing = () => {
 
-  // function login() {
-  //   setIsAuthenticated(true);
-  //   console.log("loggedInUser:" + isAuthenticated);
-  // }
-
-  // function logout() {
-  //   setIsAuthenticated(false);
-  //   console.log("loggedInUser:" + isAuthenticated);
-  // }
   const [userLogin, setUserLogin] = useState(false);
 
   useEffect(() => {
@@ -34,14 +25,9 @@ const Landing = ({ ...rest }) => {
     <>
       <h1>Welcome to Our Eagleton Food Truck</h1>
       {
-        userLogin ? <a href="/auth/logout">LogOUT</a> : <a href="/auth/github">Login with Github</a>
+        // if user is logged in, only show Logout button
+        userLogin ? <a href="/auth/logout">Logout</a> : <a href="/auth/github">Login with Github</a>
       }
-{/*       
-      <Link to="/auth/github" target="_self"><Button>Github Login</Button></Link> */}
-      {/* <br />
-      <button >Login</button>
-      <br />
-      <button >Logout</button> */}
     </>
   )
 };
