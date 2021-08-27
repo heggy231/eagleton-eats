@@ -1,5 +1,5 @@
 // connect db eagleton using pg lib
-const Pool = require('pg').Pool; // from pg lib instantiate pool db
+const Pool = require('pg').Pool; // from pg Promise lib instantiate pool db
 
 const pool = new Pool({
   user: "",
