@@ -1,10 +1,12 @@
 # repo [https://github.com/heggy231/eagleton-eats]
 
-
 # How to run
+
 ## dotenv
+
 - Please create .env file
-// inside .env
+  // inside .env
+
 ```
 PORT=8080
 
@@ -16,12 +18,9 @@ GITHUB_CALLBACK_URL=http://localhost:8080/auth/github/callback
 FRONTEND_URL=http://localhost:3000
 ```
 
-
 ## connecting to db
 
 - https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
-
-
 
 ### code to keep
 
@@ -33,21 +32,18 @@ FRONTEND_URL=http://localhost:3000
       <GuardedRoute exact path="/protected" component={Protected} auth={isAuthenticated} />
 ```
 
-
-
-
 - database: https://blog.logrocket.com/getting-started-with-postgres-in-your-react-app/
-
 
 - original repo (https://github.com/JKhariD/eagleton-eats)
 
 - [Live Demo](https://hc-eagleton-eats.herokuapp.com/)
 - create build for heroku
-first check how it looks locally when creat buind
+  first check how it looks locally when creat buind
+
 1. cd to root dir
-2. npm run build 
-// this runs the script: "build": "cd react-ui/ && npm install && npm run build"
-then heroku runs the same 
+2. npm run build
+   // this runs the script: "build": "cd react-ui/ && npm install && npm run build"
+   then heroku runs the same
 
 - [Heroku activity monitor for our app](https://dashboard.heroku.com/apps/hc-eagleton-eats/activity)
 
@@ -62,15 +58,14 @@ rename burger => favicon.ico
 - https://react-bootstrap.github.io/layout/grid/
 
 - at the top level : express server
-to check things are all good: 
-http://localhost:8080/heartbeat
+  to check things are all good:
+  http://localhost:8080/heartbeat
 
 - having two servers to connect using static files on root
 
-
 ## Heroku app deployment
 
-- add build script for react which heroku knows to 
+- add build script for react which heroku knows to
   use this.
 
 ```json
@@ -89,8 +84,8 @@ http://localhost:8080/heartbeat
 ```
 
 ## communicate to backend
-```js
 
+```js
 // inside of InputProduct.jsx)
 // step 1: package up the data I am sending
 const body = { name };
@@ -103,7 +98,6 @@ const response = await fetch("http://localhost:8080/product", {
 
 // inside of EditProduct.jsx)
 
-
 // for deleting
 // delete fetch request to backend
 const deleteProd = await fetch(`http://localhost:8080/product/${id}`, {
@@ -111,18 +105,67 @@ const deleteProd = await fetch(`http://localhost:8080/product/${id}`, {
 });
 
 // filter in ids that are not passed in id for page display only purpose
-//  db has been updated but we don't want user to update the page to 
+//  db has been updated but we don't want user to update the page to
 //  see the page update with deleted dataset.
 setProducts(products.filter((product) => product.product_id !== id));
-
-
-
 ```
 
 ## facebook passport
- - how to create your own secret key, id
- * https://developers.facebook.com/docs/facebook-login/web
- * https://youtu.be/KlE9RAOl9KA
+
+- how to create your own secret key, id
+
+* https://developers.facebook.com/docs/facebook-login/web
+* https://youtu.be/KlE9RAOl9KA
 
 Valid OAuth Redirect URIs:
 http://localhost:3000/auth/facebook/callback
+
+# [eagleton-eats](https://hc-eagleton-eats.herokuapp.com)
+
+## how do you run our app?
+
+from root directory:
+
+> npm run dev
+
+```json
+
+// query db, $1 is a place holder [name] this comes from the client side
+// append RETURNING * command for update, delete, insert data into db
+//   so that it returns back the data into my variable newProduct
+const newProduct = await pool.query(
+  "INSERT INTO product (name) VALUES($1) RETURNING *",
+  [name]
+);
+
+// => result when posting new data since I want to return *
+"rows": [
+    {
+        "product_id": 4,
+        "name": "milk"
+    }
+],
+
+// look of all data comes back
+// to just see my new data newProduct.rows[0]
+{
+    "command": "INSERT",
+    "rowCount": 1,
+    "oid": 0,
+    "rows": [
+        {
+            "product_id": 4,
+            "name": "milk"
+        }
+    ],
+    "fields": [
+        {
+            "name": "product_id",
+            "tableID": 17488,
+            "columnID": 1,
+            "dataTypeID": 23,
+            "dataTypeSize": 4,
+            "dataTypeModifier": -1,
+            "format": "text"
+        },
+```
