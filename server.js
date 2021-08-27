@@ -4,8 +4,8 @@ const cors = require("cors");
 const session = require("express-session"); // for github login
 const path = require("path"); // path comes with node therefore no need extra npm i
 const pool = require("./db"); // pg db connection
-const passport = require('passport');
-const GitHubStrategy = require('passport-github').Strategy;
+const passport = require("passport");
+const GitHubStrategy = require("passport-github").Strategy;
 
 const app = express(); // app is now express server
 
@@ -32,22 +32,25 @@ const sess = {
 };
 app.use(session(sess));
 
-passport.use(new GitHubStrategy({
-  clientID: process.env.GITHUB_CLIENT_ID,
-  clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: process.env.GITHUB_CALLBACK_URL
-},
-function(accessToken, refreshToken, profile, cb) {
-  console.log(JSON.stringify(profile));
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: process.env.GITHUB_CALLBACK_URL,
+    },
+    function (accessToken, refreshToken, profile, cb) {
+      console.log(JSON.stringify(profile));
 
-  // ASIDE: Access Tokens are super important!! Treat them like pwd (never store in plain text)
-  // You can use this to talk to Github API
-  console.log("Access Token: *****=======>" + accessToken);
+      // ASIDE: Access Tokens are super important!! Treat them like pwd (never store in plain text)
+      // You can use this to talk to Github API
+      console.log("Access Token: *****=======>" + accessToken);
 
-  // Tell passport to move on
-  cb(null, profile)
-}
-));
+      // Tell passport to move on
+      cb(null, profile);
+    }
+  )
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -61,24 +64,27 @@ app.use(passport.session());
 // from the database when deserializing.  However, due to the fact that this
 // example does not have a database, the complete Facebook profile is serialized
 // and deserialized.
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function (user, cb) {
   cb(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
+passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 
-console.log('*******process.env.GITHUB_CLIENT_ID******', process.env.GITHUB_CLIENT_ID);
+console.log(
+  "*******process.env.GITHUB_CLIENT_ID******",
+  process.env.GITHUB_CLIENT_ID
+);
 
 // ----------------------------------------------------------------------------
 //                                Routes
 // ----------------------------------------------------------------------------
 
 app.get("/", (req, res) => {
-  console.log("Here! at the ROOOT!!!!")
+  console.log("Here! at the ROOOT!!!!");
   res.send(`<h1>Hello! You are logged IN!</h1>`);
-})
+});
 
 // create a product
 app.post("/product", async (req, res) => {
@@ -152,7 +158,7 @@ app.put("/product/:id", async (req, res) => {
 // delete a product
 app.delete("/product/:id", async (req, res) => {
   try {
-    const {id} = req.params; // url ending str now stored inside of id var
+    const { id } = req.params; // url ending str now stored inside of id var
     const deleteProduct = await pool.query(
       "DELETE FROM product WHERE product_id = $1 RETURNING *",
       [id]
@@ -176,14 +182,29 @@ app.get("/heartbeat", (req, res) => {
 // 1. auth/github takes me to github, user enters github credential to authenticate('github'));
 // 2. once profile is received, callback route => redirect `/` homepage
 // 1,2 GOAL: 1. go to my app => 2. Github => 3. back to my app
-app.get('/auth/github', passport.authenticate('github'));
+app.get("/auth/github", passport.authenticate("github"));
 
-app.get('/auth/github/callback', 
-  passport.authenticate('github', { failureRedirect: '/login' }),
-  function(req, res) {
+app.get(
+  "/auth/github/callback",
+  passport.authenticate("github", { failureRedirect: "/login" }),
+  function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+    // you have to go back to react localHost 3030
+    // environment varialbe local do 3000, heroku for /
+
+    res.redirect(process.env.FRONTEND_URL);
+  }
+);
+
+app.get("/auth/userinfo", (req, res) => {
+  console.log("server user info heeerrr ****===>", req);
+  res.json(req.user);
+});
+
+app.get("/auth/logout", (req, res) => {
+  req.logout();
+  res.redirect(process.env.FRONTEND_URL);
+});
 
 // PORT needs
 app.listen(PORT, () => {
