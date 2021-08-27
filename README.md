@@ -1,18 +1,10 @@
-# [Eagleton Eats](https://hc-eagleton-eats.herokuapp.com)
-
-## how do you run our app?
-
-from root directory:
-
-> npm run dev
-
-# Eat @ Home 🍴 🍲 🍗 🍑
+# [Eagleton Eats](https://hc-eagleton-eats.herokuapp.com) 🍴 🍲 🍗 🍑
 
 ![image](./eagletonEats.png)
 
 [eagleton-eats](https://hc-eagleton-eats.herokuapp.com)
 
-**Eagleton restaurant - From farm to table to healthy dinner meals best in town!** :fork_and_knife: :stew:
+**Eagleton restaurant - From farm to table to healthy dinner meals best in town!** 🍴 🍲
 
 [Live website](https://eat-at-home-server.herokuapp.com/)
 
