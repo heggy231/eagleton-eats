@@ -83,3 +83,7 @@ CREATE TABLE product(
 
 - The application will be available at http://localhost:3000.
   <br>
+
+<h3>Congrats!</h3>
+You have successfully built your own eagleton eats app.
+`✧*｡٩(ˊᗜˋ*)و✧*｡`
