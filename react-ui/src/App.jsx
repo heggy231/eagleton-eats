@@ -3,8 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./sectioning/header/header";
 import Main from "./sectioning/main/main";
 
-// import "./App.css";
-
 function App() {
   return (
     <>

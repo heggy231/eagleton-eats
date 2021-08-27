@@ -28,6 +28,7 @@ const EditProduct = ({ product }) => {
     }
   };
 
+  
   const handleResetData = () => setName(product.name);
 
 

@@ -1,3 +1,5 @@
+-- this is command you want to run to set up the 
+-- database on you local machine.
 CREATE DATABASE eagleton;
 
 CREATE TABLE product(
@@ -15,3 +17,16 @@ UPDATE product SET name = "Japanese brown rice" WHERE product_id = 3;
 DELETE FROM product WHERE product_id = 1;
 
 SELECT name FROM product;
+
+-- handy commands for psql
+-- start psql and enter to eaglton
+> psql eagleton
+-- enter into eagleton db
+> \c eagleton 
+-- List tables
+> \dt 
+-- List users
+> \du
+-- quit psql
+> \q
+
