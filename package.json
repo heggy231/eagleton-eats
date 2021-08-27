@@ -6,8 +6,9 @@
   "scripts": {
     "build": "cd react-ui/ && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "dev:all": "run-p start && cd react-ui/ && start"
   },
   "cacheDirectories": [
     "node_modules",
