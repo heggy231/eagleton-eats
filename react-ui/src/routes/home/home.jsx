@@ -1,11 +1,10 @@
 // import Food from "./food-wooden.jpeg";
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import './home.css';
-import { Link } from 'react-router-dom';
+import "./home.css";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
-
   const [userLogin, setUserLogin] = useState(false);
 
   useEffect(() => {
@@ -14,22 +13,38 @@ const Landing = () => {
         .then((res) => res.json())
         .then((userData) => {
           console.log("user login?", userData);
-          setUserLogin(true)
+          setUserLogin(true);
         });
     } catch (error) {
-      console.error("user data request error ====>", error.message)
+      console.error("user data request error ====>", error.message);
     }
-  }, [])
+  }, []);
+
+  const jumboStyle = {
+    backgroundColor: "#ebf0f573",
+    marginTop: "-1rem",
+  };
 
   return (
     <>
-      <h1>Welcome to Our Eagleton Food Truck</h1>
-      {
-        // if user is logged in, only show Logout button
-        userLogin ? <a href="/auth/logout">Logout</a> : <a href="/auth/github">Login with Github</a>
-      }
+      <div className="jumbotron" style={jumboStyle}>
+        <h1>Welcome to Our Eagleton Food Truck</h1>
+        <p>A Place where heart opens up and stronger relationship is forged!</p>
+        {
+          // if user is logged in, only show Logout button
+          userLogin ? (
+            <a href="/auth/logout" className="btn btn-primary">
+              Logout
+            </a>
+          ) : (
+            <a href="/auth/github" className="btn btn-primary">
+              Login with Github
+            </a>
+          )
+        }
+      </div>
     </>
-  )
+  );
 };
 
 export default Landing;
