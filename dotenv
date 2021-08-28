@@ -10,3 +10,9 @@ GITHUB_CLIENT_SECRET=
 GITHUB_CALLBACK_URL=http://localhost:8080/auth/github/callback
 
 FRONTEND_URL=http://localhost:3000
+
+DB_USER_NAME=""
+DB_USER_PASSWORD=""
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=eagleton

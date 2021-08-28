@@ -2,7 +2,7 @@
 const Pool = require("pg").Pool; // from pg Promise lib instantiate pool db
 
 const pool = new Pool({
-  user: process.env.DB_USER,
+  user: process.env.DB_USER_NAME,
   password: process.env.DB_USER_PASSWORD,
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
