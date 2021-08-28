@@ -21,7 +21,7 @@ Eagleton Eats is an app for users who want a good home cooking meal without any 
 - Express.js
 - Passport.js
 - PostgreSQL
-- Sequelize
+- PG Promise
 - OAuth Authentication
 - Heroku
 
@@ -57,7 +57,7 @@ FRONTEND_URL=http://localhost:3000
 ```
 
 If you are running it locally:
-make sure your db.js logically should look like this.
+make sure your db.js logically does this. The value should be assigned already in your .env file.
 
 ```js
 // connect db eagleton using pg lib
@@ -77,7 +77,7 @@ module.exports = pool;
 
 ### 5. Execute the application
 
-- Start your database in postgres and create tables in `psql` command line.
+- Start your Postgres database. Create database and table in `psql` command line or BeeKeeper.
 
 ```psql
 CREATE DATABASE eagleton;
