@@ -24,17 +24,21 @@ Eagleton Eats is an app for users who want a good home cooking meal without any 
 - PG Promise
 - OAuth Authentication
 - Heroku
+- [Heroku Postgres](https://elements.heroku.com/addons/heroku-postgresql)
+- Beekeeper
+- AWS server
+- Psql
 
 ## ⚙ How to run
 
 ### 1. Clone this repository
 
-- Under the repository name, click on the code button and copy the clone URL for this repository.
+- Under the [Github rep](https://github.com/heggy231/eagleton-eats) name, click on the code button and copy the clone URL for this [repo](https://github.com/heggy231/eagleton-eats).
 - Open your terminal and type `git clone https://github.com/heggy231/eagleton-eats.git`.
 
 ### 2. Open the folder
 
-- After cloning the repository, use your favorite code editor to open the folder. We recommend [Visual Studio Code](https://code.visualstudio.com/).
+- After cloning the [github rep](https://github.com/heggy231/eagleton-eats), use your favorite code editor to open the folder. We recommend [Visual Studio Code](https://code.visualstudio.com/).
 
 ### 3. Install the required software
 

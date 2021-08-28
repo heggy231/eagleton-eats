@@ -6,6 +6,29 @@
 
 - create table in my beekeeper (connect to heroku postGres db)
 
+- error
+  https://stackoverflow.com/questions/26482777/create-database-cannot-run-inside-a-transaction-block
+
+trying to create a db and table in heroku Postgres db
+
+- error message: CREATE DATABASE cannot run inside a transaction block
+
+- resolution: Heroku already created db so all I have to do is create table.
+
+```sql
+
+CREATE TABLE product(
+  product_id SERIAL PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+```
+
+do this in beekeeper => you should see
+Query Executed success!
+
+![Beekeeper Heroku Tb](./createTbInHeroku.png)
+
 ## dotenv
 
 - Please create .env file
