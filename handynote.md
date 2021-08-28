@@ -2,6 +2,10 @@
 
 # How to run
 
+Kill all the db hardcoded to /api/product path
+
+http://localhost:8080/product
+
 ## Heroku deployment leftover todo:
 
 - create table in my beekeeper (connect to heroku postGres db)
