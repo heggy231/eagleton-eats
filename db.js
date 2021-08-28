@@ -1,12 +1,12 @@
 // connect db eagleton using pg lib
-const Pool = require('pg').Pool; // from pg Promise lib instantiate pool db
+const Pool = require("pg").Pool; // from pg Promise lib instantiate pool db
 
 const pool = new Pool({
-  user: "",
-  password: "",
-  host: "localhost",
-  port: 5432,
-  database: "eagleton",
+  user: process.env.DB_USER,
+  password: process.env.DB_USER_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
 });
 
 // export db connection to the rest of the app
