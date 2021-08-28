@@ -30,3 +30,14 @@ SELECT name FROM product;
 -- quit psql
 > \q
 
+-- what I use for beekeeper to populate data and create table product
+CREATE TABLE product(
+  product_id SERIAL PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+SELECT * FROM product;
+
+INSERT INTO product(name) VALUES('Korean brown rice');
+INSERT INTO product(name) VALUES('Kimchi');
+
