@@ -42,7 +42,7 @@ const DisplayProducts = () => {
   return (
     <>
       <h1 className="text-center">List of Products</h1>
-      <table className="table">
+      <table className="table" style={{ backgroundColor: "#bbc8e796" }}>
         <thead>
           <tr>
             <th>Name</th>
