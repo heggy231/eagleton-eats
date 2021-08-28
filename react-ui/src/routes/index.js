@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import About from "./about/about";
 import Home from "./home/home";
 import Menu from "./menu/menu";
@@ -29,6 +29,7 @@ const Routes = () => {
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/menu" render={() => <Menu />} />
       <Route exact path="/cart" render={() => <Cart />} />
+      <Redirect from="/cart-page" to="cart" />
       <Route exact path="/about" render={() => <About />} />
       <GuardedRoute
         exact
