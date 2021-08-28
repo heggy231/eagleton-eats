@@ -208,6 +208,10 @@ app.get("/auth/logout", (req, res) => {
   res.redirect(process.env.FRONTEND_URL);
 });
 
+app.get("*", function (req, res, next) {
+  res.sendFile(__dirname + "/react-ui/build/index.html");
+});
+
 // PORT needs
 app.listen(PORT, () => {
   console.log(`The server is listening at port ${PORT}`);
