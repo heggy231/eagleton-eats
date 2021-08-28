@@ -2,6 +2,10 @@
 
 # How to run
 
+## Heroku dployemnet leftover todo:
+
+- create table in my beekeeper (connect to heroku postGres db)
+
 ## dotenv
 
 - Please create .env file
