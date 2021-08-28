@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import DisplayProducts from "./DisplayProducts";
 
-
 const InputProduct = () => {
   const [name, setName] = useState("");
 
@@ -11,7 +10,7 @@ const InputProduct = () => {
     e.preventDefault();
     try {
       const body = { name };
-      const response = await fetch("http://localhost:8080/product", {
+      const response = await fetch("/api/product", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -26,8 +25,6 @@ const InputProduct = () => {
   return (
     <>
       <div className="container">
-
-
         <h1 className="text-center">Input product</h1>
         <form className="d-flex mt-3" onSubmit={onSubmitForm}>
           <input
@@ -39,7 +36,6 @@ const InputProduct = () => {
           <button className="btn btn-warning">Add Product</button>
         </form>
         <DisplayProducts />
-
       </div>
     </>
   );

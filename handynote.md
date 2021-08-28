@@ -2,7 +2,7 @@
 
 # How to run
 
-## Heroku dployemnet leftover todo:
+## Heroku deployment leftover todo:
 
 - create table in my beekeeper (connect to heroku postGres db)
 
@@ -123,7 +123,7 @@ rename burger => favicon.ico
 // step 1: package up the data I am sending
 const body = { name };
 // step 2: specify what method CREATE => POST, Update => PUT, Delete => DELETE
-const response = await fetch("http://localhost:8080/product", {
+const response = await fetch("/api/product", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(body),
@@ -133,7 +133,7 @@ const response = await fetch("http://localhost:8080/product", {
 
 // for deleting
 // delete fetch request to backend
-const deleteProd = await fetch(`http://localhost:8080/product/${id}`, {
+const deleteProd = await fetch(`/api/${id}`, {
   method: "DELETE",
 });
 

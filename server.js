@@ -87,7 +87,7 @@ app.get("/", (req, res) => {
 });
 
 // create a product
-app.post("/product", async (req, res) => {
+app.post("/api/product", async (req, res) => {
   try {
     console.log("inside post", req.body); // {name: 'I need to clean'}
     // we get access to req.body from express.json() middleware
@@ -109,7 +109,7 @@ app.post("/product", async (req, res) => {
 });
 
 // get all products
-app.get("/product", async (req, res) => {
+app.get("/api/product", async (req, res) => {
   try {
     // no need for return * here since get displays data inherently
     const allProduct = await pool.query("SELECT * FROM product");
@@ -121,9 +121,9 @@ app.get("/product", async (req, res) => {
 });
 
 // get a product
-app.get("/product/:id", async (req, res) => {
+app.get("/api/product/:id", async (req, res) => {
   try {
-    // console.log(req.params); // => what I defined in my :id part of my url (funfunfun) => maps to variable id => { id: 'funfunfun' } http://localhost:8080/product/funfunfun
+    // console.log(req.params); // => what I defined in my :id part of my url (funfunfun) => maps to variable id => { id: 'funfunfun' } http://localhost:8080/api/product/funfunfun
 
     const { id } = req.params; // destructor from req.params.id
     const product = await pool.query(
@@ -139,7 +139,7 @@ app.get("/product/:id", async (req, res) => {
 });
 
 // update a product
-app.put("/product/:id", async (req, res) => {
+app.put("/api/product/:id", async (req, res) => {
   try {
     const { id } = req.params; // url specified variable id
     const { name } = req.body; // name column from what I post to db
@@ -156,7 +156,7 @@ app.put("/product/:id", async (req, res) => {
 });
 
 // delete a product
-app.delete("/product/:id", async (req, res) => {
+app.delete("/api/product/:id", async (req, res) => {
   try {
     const { id } = req.params; // url ending str now stored inside of id var
     const deleteProduct = await pool.query(

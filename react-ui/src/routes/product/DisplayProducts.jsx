@@ -7,7 +7,7 @@ const DisplayProducts = () => {
   const getProducts = async () => {
     try {
       // HEre no need to define method as GET since by default fetch makes a GET request, there is no body to send
-      const response = await fetch("http://localhost:8080/product");
+      const response = await fetch("/api/product");
       const jsonData = await response.json(); // parse it as JSON
       // console.log("jsonData from backend", jsonData);
       // ==> [{}, {}, ...] which is obj of things inside{product_id: 5, name: "ham"}
@@ -24,7 +24,7 @@ const DisplayProducts = () => {
   const deleteProduct = async (id) => {
     try {
       // delete fetch request to backend
-      const deleteProd = await fetch(`http://localhost:8080/product/${id}`, {
+      const deleteProd = await fetch(`/api/product/${id}`, {
         method: "DELETE",
       });
 
@@ -61,7 +61,7 @@ const DisplayProducts = () => {
               <tr key={product.product_id}>
                 <td>{product.name}</td>
                 <td>
-                  <EditProduct product={product}/>
+                  <EditProduct product={product} />
                 </td>
                 <td>
                   <button
