@@ -29,6 +29,51 @@ Eagleton Eats is an app for users who want a good home cooking meal without any 
 - AWS server
 - Psql
 
+## 🐼 🥷 Difficult parts we faced while building our app:
+
+- After deployment: Heroku's aws database would not save items to Product table nor display already seeded the database.
+
+![error table](./no_pgSSL.png)
+
+- error message about SSL off
+
+```
+no pg_hba.conf entry for host "34.229.63.163", user "rfpsygoyxsejbo", database "d2quaquortuh6n", SSL off
+```
+
+- fix: how you can turn on SSL for your postgres connection.
+
+https://stackoverflow.com/questions/60048669/heroku-postgres-psql-fatal-no-pg-hba-conf-entry-for-host
+
+- for SSL
+  https://devcenter.heroku.com/articles/heroku-postgresql#connecting-in-node-js
+
+```js
+// before fix
+const pool = new Pool({
+  user: process.env.DB_USER_NAME,
+  password: process.env.DB_USER_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  ssl: {
+    rejectUnauthorized: false, // <===== add this line to turn off SSL OFF
+  },
+});
+
+// after fix
+const pool = new Pool({
+  user: process.env.DB_USER_NAME,
+  password: process.env.DB_USER_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  ssl: {
+    rejectUnauthorized: false, // <===== add this line to turn off SSL OFF
+  },
+});
+```
+
 ## ⚙ How to run
 
 ### 1. Clone this repository
