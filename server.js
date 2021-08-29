@@ -199,7 +199,7 @@ app.get(
 app.get("/auth/userinfo", (req, res) => {
   // once user is authenticated, req.user has the value
   //  then the frontend takes this info and displays protected route
-  console.log("server user info heeerrreee ****===>", req);
+  console.log("server user info here ****===>", req);
   res.json(req.user);
 });
 

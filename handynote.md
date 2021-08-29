@@ -644,3 +644,19 @@ Only one child of switch can match. Once a matching route is found, it will stop
 
 - Option 3 Redirect) Use props.history.push('new/path')
   - Components loaded by React Router's Route component receive history on props.
+
+## difficult parts
+
+after deployment: Heroku's aws server not saving new items to Product table nor seeding the database.
+
+![error table](./no_pgSSL.png)
+
+- error message about SSL off
+
+```
+no pg_hba.conf entry for host "34.229.63.163", user "rfpsygoyxsejbo", database "d2quaquortuh6n", SSL off
+```
+
+- fix: how you can turn on SSL for your postgres connection.
+
+https://stackoverflow.com/questions/60048669/heroku-postgres-psql-fatal-no-pg-hba-conf-entry-for-host

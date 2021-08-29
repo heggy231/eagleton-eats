@@ -10,7 +10,7 @@
 
 ## Project Mission
 
-Eagleton Eats is an app for users who want a good home cooking meal without any hassle of cooking. If you are ready for tasty and healthy meal promptly then you've come to right place! Eagleton Eats care for sustainable food and source it from local farmers. We care deeply about carbon footprint and committed to give back to local community.
+Eagleton Eats is an app for users who want a good home cooking meal without any hassle of cooking. If you are ready for tasty and healthy meal promptly then you've come to right place! Eagleton Eats is sustainable. We source all our produce from local farmers within 30 miles from our town. We care deeply about carbon footprints and committed to give back to local community.
 
 ## 🛠️ Technologies Used
 
@@ -60,11 +60,11 @@ GITHUB_CALLBACK_URL=http://localhost:8080/auth/github/callback
 FRONTEND_URL=http://localhost:3000
 ```
 
-If you are running it locally:
-make sure your db.js logically does this. The value should be assigned already in your .env file.
+When running the app locally:
+Please make sure your `db.js` logically does this. The value should be assigned already in your `.env` file.
 
 ```js
-// connect db eagleton using pg lib
+// connect db Eagleton using pg lib
 const Pool = require("pg").Pool; // from pg Promise lib instantiate pool db
 
 const pool = new Pool({
@@ -100,5 +100,5 @@ CREATE TABLE product(
   <br>
 
 <h3>Congrats!</h3>
-You have successfully built your own eagleton eats app.
+You have successfully built your own Eagleton Eats app.
 `✧*｡٩(ˊᗜˋ*)و✧*｡`
