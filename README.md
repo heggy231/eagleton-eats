@@ -71,7 +71,7 @@ const pool = new Pool({
 });
 ```
 
-## ⚙ How to run
+## ⚙ How to run locally
 
 ### 1. Clone this repository
 
@@ -84,7 +84,7 @@ const pool = new Pool({
 
 ### 3. Install the required software
 
-You will need to install [PostgreSQL](https://www.postgresql.org/download/) and [Node.js](https://nodejs.org/en/) to run the back-end piece.
+You will need to install [PostgreSQL](https://www.postgresql.org/download/) and [Node.js](https://nodejs.org/en/) to run the back-end and check eagleton database.
 
 ### 4. Install the dependencies and `.env` file
 
@@ -136,11 +136,35 @@ CREATE TABLE product(
 
 - Run `npm start` or `yarn start` in your terminal from the `root` and `react-ui` folder.
 
+- Comment out ssl object "SSL connection rejectAuthorized: false" in `db.js`. Unless you do this, you will one, see this server error message: `The server does not support SSL connections` and two, can't retrieve your data from database nor post new data on Product page. Once you are done running it locally, please turn SSL back on for your postgres connection.
+
+```js
+// inside `db.js`
+// This is an example on how to `TURN OFF SSL` in order to run eagleton database locally
+const Pool = require("pg").Pool;
+
+const pool = new Pool({
+  user: process.env.DB_USER_NAME,
+  password: process.env.DB_USER_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  // ssl: {
+  //   rejectUnauthorized: false,
+  // },
+});
+
+// export db connection to the rest of the app
+module.exports = pool;
+```
+
+- Please remember turn on SSL for your postgres connection once you are done running it locally so that remote users can connect to your database. You can do this by commenting in `ssl` object in `db.js`. You can read more about [SSL here.](https://stackoverflow.com/questions/54302088/how-to-fix-error-the-server-does-not-support-ssl-connections-when-trying-to-a)
+
 ### 6. Open in your browser
 
 - The application will be available at http://localhost:3000.
   <br>
 
-<h3>Congrats!</h3>
-You have successfully built your own Eagleton Eats app.
+<h3>🥗🍗🥂🎂 Congrats!</h3>
+You have successfully built your own Eagleton Eats app locally.
 `✧*｡٩(ˊᗜˋ*)و✧*｡`

@@ -24,7 +24,7 @@ const DisplayProducts = () => {
   const deleteProduct = async (id) => {
     try {
       // delete fetch request to backend
-      const deleteProd = await fetch(`/api/product/${id}`, {
+      await fetch(`/api/product/${id}`, {
         method: "DELETE",
       });
 

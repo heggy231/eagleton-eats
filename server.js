@@ -81,9 +81,9 @@ console.log(
 //                                Routes
 // ----------------------------------------------------------------------------
 
-app.get("/", (req, res) => {
-  console.log("Here! at the ROOOT!!!!");
-  res.send(`<h1>Hello! You are logged IN!</h1>`);
+app.post("/api/checkout", async (req, res) => {
+  console.log("req.body ====>", req.body);
+  res.send("Checkout!");
 });
 
 // create a product
@@ -206,6 +206,11 @@ app.get("/auth/userinfo", (req, res) => {
 app.get("/auth/logout", (req, res) => {
   req.logout();
   res.redirect(process.env.FRONTEND_URL);
+});
+
+app.get("/", (req, res) => {
+  console.log("Here! at the ROOOT!!!!");
+  res.send(`<h1>Hello! You are logged IN!</h1>`);
 });
 
 app.get("*", function (req, res, next) {

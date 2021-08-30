@@ -24,6 +24,17 @@ const Cart = (props) => {
     setLen(len - 1); // comment this line to see what happens
   };
 
+  const checkout = () => {
+    console.log("props.items =====>", props.cartItems);
+    fetch("/api/checkout", {
+      method: "POST",
+      body: JSON.stringify(props.cartItems),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
+
   return (
     <div id="cart">
       <div>
@@ -48,6 +59,9 @@ const Cart = (props) => {
         <div>
           total: ${calculateCartTotal(props.cartItems, props.items).toFixed(2)}
         </div>
+        <button className="btn btn-primary" onClick={checkout}>
+          Checkout
+        </button>
       </div>
     </div>
   );
