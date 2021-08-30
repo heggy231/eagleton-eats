@@ -14,17 +14,17 @@ Eagleton Eats is an app for users who want a good home cooking meal without any 
 
 ## 🛠️ Technologies Used
 
-- CSS
+- [React Bootstrap](https://react-bootstrap.netlify.app/getting-started/introduction/)
 - React.js
 - Javascript
 - Node.js
 - Express.js
 - Passport.js
 - PostgreSQL
-- PG Promise
+- [PG](https://www.npmjs.com/package/pg)
 - OAuth Authentication
 - Heroku
-- [Heroku Postgres](https://elements.heroku.com/addons/heroku-postgresql)
+- [Heroku Postgresql](https://elements.heroku.com/addons/heroku-postgresql)
 - Beekeeper
 - AWS server
 - Psql
