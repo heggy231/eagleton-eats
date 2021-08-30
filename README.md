@@ -136,11 +136,11 @@ CREATE TABLE product(
 
 - Run `npm start` or `yarn start` in your terminal from the `root` and `react-ui` folder.
 
-- Comment out ssl object "SSL connection rejectUaherized: false" in `db.js`. Once you are done running it locally, you can turn on SSL for your postgres connection.
+- Comment out ssl object "SSL connection rejectAuthorized: false" in `db.js`. Unless you do this, you will one, see this server error message: `The server does not support SSL connections` and two, can't retrieve your data from database nor post new data on Product page. Once you are done running it locally, please turn SSL back on for your postgres connection.
 
 ```js
 // inside `db.js`
-// This is an example of `TURN OFF SSL` to run our database locally
+// This is an example on how to `TURN OFF SSL` in order to run eagleton database locally
 const Pool = require("pg").Pool;
 
 const pool = new Pool({
