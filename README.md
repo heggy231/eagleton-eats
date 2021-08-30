@@ -16,6 +16,7 @@ Eagleton Eats is an app for users who want a good home cooking meal without any 
 
 - [React Bootstrap](https://react-bootstrap.netlify.app/getting-started/introduction/)
 - React.js
+- Redux, Hooks
 - Javascript
 - Node.js
 - Express.js
