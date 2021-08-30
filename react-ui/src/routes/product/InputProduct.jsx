@@ -10,7 +10,7 @@ const InputProduct = () => {
     e.preventDefault();
     try {
       const body = { name };
-      const response = await fetch("/api/product", {
+      await fetch("/api/product", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

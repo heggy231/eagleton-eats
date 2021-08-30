@@ -14,7 +14,7 @@ const EditProduct = ({ product }) => {
       // send data to backend, remember to package your data when send to backend
       const body = { name };
       // send response to RESTApi
-      const response = await fetch(`/api/product/${product.product_id}`, {
+      await fetch(`/api/product/${product.product_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -32,11 +32,11 @@ const EditProduct = ({ product }) => {
 
   return (
     <>
-      <div class="container" style={{ marginLeft: "-1rem" }}>
+      <div className="container" style={{ marginLeft: "-1rem" }}>
         {/* data-target maps for unique modal look for id=id5 out many modals from DisplayProduct page */}
         <button
           type="button"
-          class="btn btn-primary"
+          className="btn btn-primary"
           data-toggle="modal"
           data-target={`#id${product.product_id}`}
         >
@@ -45,17 +45,17 @@ const EditProduct = ({ product }) => {
 
         {/* make each modal unique by append product_id then "id" prepend  ==> result: id = id5 */}
         <div
-          class="modal fade"
+          className="modal fade"
           id={`id${product.product_id}`}
           onClick={handleResetData}
         >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Edit Product Name</h4>
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h4 className="modal-title">Edit Product Name</h4>
                 <button
                   type="button"
-                  class="close"
+                  className="close"
                   data-dismiss="modal"
                   onClick={handleResetData}
                 >
@@ -63,7 +63,7 @@ const EditProduct = ({ product }) => {
                 </button>
               </div>
 
-              <div class="modal-body">
+              <div className="modal-body">
                 <input
                   type="text"
                   className="form-control"
@@ -72,10 +72,10 @@ const EditProduct = ({ product }) => {
                 />
               </div>
 
-              <div class="modal-footer">
+              <div className="modal-footer">
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   data-dismiss="modal"
                   onClick={handleEditBtnSubmitToBackend}
                 >
@@ -83,7 +83,7 @@ const EditProduct = ({ product }) => {
                 </button>
                 <button
                   type="button"
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   data-dismiss="modal"
                   onClick={handleResetData}
                 >
