@@ -1,8 +1,6 @@
 // import Food from "./food-wooden.jpeg";
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
 import "./home.css";
-import { Link } from "react-router-dom";
 
 const Landing = () => {
   const [userLogin, setUserLogin] = useState(false);
